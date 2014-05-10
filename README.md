@@ -5,5 +5,4 @@ TODO:
 +	moar headers
 +	moar mime types
 +	documentation
-+	test on LuaJIT
 +	better folder index page

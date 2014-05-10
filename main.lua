@@ -216,6 +216,8 @@ local ctype={
 	["html"]="text/html",
 	["css"]="text/css",
 	["png"]="image/png",
+	["jpg"]="image/jpeg",
+	["jpeg"]="image/jpeg",
 	["txt"]="text/plain",
 }
 
@@ -223,7 +225,6 @@ local function form(cl,res)
 	local cldat=cli[cl]
 	local headers=res.headers or {}
 	local code=res.code or "200 Found"
-	headers["ETag"]=cldat.headers["ETag"]
 	headers["Server"]="Less fail lua webserver"
 	headers["Content-Length"]=headers["Content-Length"] or #(res.data or "")
 	if headers["Content-Length"]==0 or cldat.method=="HEAD" then
@@ -296,7 +297,7 @@ local function req(cl)
 			if not res.data then
 				local bse=fs.combine(base,url):gsub("/$","")
 				local ext=url:match(".+%.(.-)$") or ""
-				res.type=ctype[ext]
+				res.type=ctype[(ext or ""):lower()]
 				if ext=="lua" then
 					local data=fs.read(bse)
 					local func,err=loadstring(data,"="..url)
