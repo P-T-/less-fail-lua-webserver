@@ -43,9 +43,9 @@ function async.socket(sk,err)
 			return txt,err
 		end,
 		send=function(txt)
-			for l1=1,#txt,8192 do
+			for l1=1,#txt,16384 do
 				while true do
-					local t,err=sk:send(txt,l1,l1+8191)
+					local t,err=sk:send(txt,l1,l1+16383)
 					if not t then
 						if err~="timeout" then
 							return false,err
