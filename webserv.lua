@@ -79,6 +79,7 @@ local ctype={
 	["jpg"]="image/jpeg",
 	["jpeg"]="image/jpeg",
 	["txt"]="text/plain",
+	["zip"]="application/octet-stream",
 }
 
 local function form(cl,res)

@@ -1,20 +1,6 @@
 local socket=require("socket")
 local lfs=require("lfs")
 
-function tpairs(tbl)
-	local s={}
-	local c=1
-	for k,v in pairs(tbl) do
-		s[c]=k
-		c=c+1
-	end
-	c=0
-	return function()
-		c=c+1
-		return s[c],tbl[s[c]]
-	end
-end
-
 config={
 	port=8080,
 	logging=false,
